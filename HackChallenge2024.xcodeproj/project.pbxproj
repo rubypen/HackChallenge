@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C13DE75B2CFC1BB50051D572 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13DE75A2CFC1BB50051D572 /* NetworkManager.swift */; };
 		C1828E5B2CFC131E006DD54F /* ClassItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1828E5A2CFC131E006DD54F /* ClassItem.swift */; };
 		C1828E5E2CFC1474006DD54F /* ClassCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1828E5D2CFC1474006DD54F /* ClassCellView.swift */; };
 		C1828E602CFC1498006DD54F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1828E5F2CFC1498006DD54F /* ContentView.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C13DE75A2CFC1BB50051D572 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		C1828E5A2CFC131E006DD54F /* ClassItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassItem.swift; sourceTree = "<group>"; };
 		C1828E5D2CFC1474006DD54F /* ClassCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassCellView.swift; sourceTree = "<group>"; };
 		C1828E5F2CFC1498006DD54F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -43,6 +45,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C13DE7592CFC1B770051D572 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				C13DE75A2CFC1BB50051D572 /* NetworkManager.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		C1828E552CFC127D006DD54F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +97,7 @@
 		C1E02B652CFC0C7700CF5590 /* HackChallenge2024 */ = {
 			isa = PBXGroup;
 			children = (
+				C13DE7592CFC1B770051D572 /* Networking */,
 				C1828E5C2CFC144B006DD54F /* Views */,
 				C1828E562CFC12C8006DD54F /* Models */,
 				C1828E552CFC127D006DD54F /* Controllers */,
@@ -116,6 +127,8 @@
 			dependencies = (
 			);
 			name = HackChallenge2024;
+			packageProductDependencies = (
+			);
 			productName = HackChallenge2024;
 			productReference = C1E02B632CFC0C7700CF5590 /* HackChallenge2024.app */;
 			productType = "com.apple.product-type.application";
@@ -144,6 +157,8 @@
 				Base,
 			);
 			mainGroup = C1E02B5A2CFC0C7700CF5590;
+			packageReferences = (
+			);
 			productRefGroup = C1E02B642CFC0C7700CF5590 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -174,6 +189,7 @@
 				C1E02B6B2CFC0C7700CF5590 /* ViewController.swift in Sources */,
 				C1E02B672CFC0C7700CF5590 /* AppDelegate.swift in Sources */,
 				C1828E602CFC1498006DD54F /* ContentView.swift in Sources */,
+				C13DE75B2CFC1BB50051D572 /* NetworkManager.swift in Sources */,
 				C1E02B692CFC0C7700CF5590 /* SceneDelegate.swift in Sources */,
 				C1828E5B2CFC131E006DD54F /* ClassItem.swift in Sources */,
 				C1828E5E2CFC1474006DD54F /* ClassCellView.swift in Sources */,
