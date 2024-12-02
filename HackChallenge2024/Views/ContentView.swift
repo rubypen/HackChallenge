@@ -8,40 +8,46 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var searchQuery: String = ""
     
-    // Filtered list of classes
+    // MARK: - Properties (data)
+    
+    @State private var searchQuery: String = ""
     var filteredClasses: [ClassItem] {
         sampleClasses.filter { searchQuery.isEmpty || $0.name.localizedCaseInsensitiveContains(searchQuery) }
     }
     
+    
+    // MARK: - Main View
+    
     var body: some View {
         NavigationView {
             ZStack {
-                // Background Colors
+                
+                // Background Aesthetics
                 LinearGradient(
-                    gradient: Gradient(colors: [Color.purple, Color.blue]),
+                    gradient: Gradient(colors: [Color.blue, Color.white]),
                     startPoint: .top,
                     endPoint: .bottom
                 )
-                .edgesIgnoringSafeArea(.all) // This works on iOS 13
+                .edgesIgnoringSafeArea(.all)
                 
                 VStack {
                     // Search Bar
                     TextField("Search Classes...", text: $searchQuery)
                         .padding()
                         .background(Color.white.opacity(0.8))
+                        .foregroundColor(.black)
                         .cornerRadius(10)
                         .padding(.horizontal)
                     
-                    // Class List View
+                    // Scroll View for List of [ClassCellView]
                     ScrollView {
-                        VStack(spacing: 16) { // Replace LazyVStack with VStack
+                        VStack(spacing: 16) {
                             ForEach(filteredClasses) { classItem in
                                 NavigationLink(destination: ViewController(classItem: classItem)) {
                                     ClassCellView(classItem: classItem)
                                 }
-                                .buttonStyle(PlainButtonStyle()) // This works on iOS 13
+                                .buttonStyle(PlainButtonStyle())
                             }
                         }
                     }
@@ -49,8 +55,7 @@ struct ContentView: View {
                 }
                 .padding()
             }
-            .navigationBarTitle("Study", displayMode: .inline) // Compatible with iOS 13
-            .foregroundColor(.white)
+            .navigationBarTitle("📚 STUDY CENTRAL 📚", displayMode: .inline)
         }
     }
 }
