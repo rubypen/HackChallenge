@@ -8,31 +8,34 @@
 import SwiftUI
 
 struct ViewController: View {
+    
+    // MARK: - Properties (Data)
     let classItem: ClassItem
-
-    @State private var firstPrelimResources: [(link: String, topic: String)] = [("https://youtu.be/example1", "Sorting Algorithms")]
-    @State private var secondPrelimResources: [(link: String, topic: String)] = [("https://youtu.be/example3", "Dynamic Programming")]
-    @State private var finalPrelimResources: [(link: String, topic: String)] = [("https://youtu.be/example4", "Graph Traversals")]
-
-    @State private var expandedTopic: String? // Tracks the currently expanded topic
-
+    @State private var expandedTopic: String?
+    @State private var selectedPrelim: String = "First Prelim"
     @State private var newResourceLink: String = ""
     @State private var newResourceTopic: String = ""
-    @State private var selectedPrelim: String = "First Prelim" // Tracks selected prelim for adding a resource
+    
+    @State private var fstPrelimResources: [(link: String, topic: String)] = [("https://youtu.be/rbbTd-gkajw?si=kRUTl9Yvcqo3zifi", "Sorting Algorithms")]
+    @State private var sndPrelimResources: [(link: String, topic: String)] = [("https://youtu.be/aPQY__2H3tE?si=tnhvb-yypdCnfTmq", "Dynamic Programming")]
+    @State private var finalPrelimResources: [(link: String, topic: String)] = [("https://youtu.be/Tl90tNtKvxs?si=rNdE7f1M-VV7QBGh", "Ford-Fulkerson Algorithm")]
 
+    // MARK: - Body
     var body: some View {
         ZStack {
-            // Background Gradient
+            // MARK: - Background Aesthetics
             LinearGradient(
-                gradient: Gradient(colors: [Color.yellow, Color.white]),
+                gradient: Gradient(colors: [Color.mint.opacity(0.8), Color.white]),
                 startPoint: .top,
                 endPoint: .bottom
             )
             .edgesIgnoringSafeArea(.all)
 
+            // MARK: - Content ScrollView
             ScrollView {
                 VStack(spacing: 20) {
-                    // Prerequisite Label and Horizontal Scroll
+                    
+                    // MARK: - Prerequisite Classes Section
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Prerequisite Classes")
                             .font(.headline)
@@ -44,13 +47,13 @@ struct ViewController: View {
                                 ForEach(classItem.prerequisites, id: \.self) { prerequisite in
                                     HStack {
                                         Image(systemName: "checkmark.circle.fill")
-                                            .foregroundColor(.white)
+                                            .foregroundColor(Color.white)
                                         Text(prerequisite)
                                             .font(.headline)
                                             .foregroundColor(.black)
                                     }
                                     .padding()
-                                    .background(Color.purple.opacity(0.8))
+                                    .background(Color.green.opacity(0.8))
                                     .cornerRadius(10)
                                     .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 5)
                                 }
@@ -60,10 +63,9 @@ struct ViewController: View {
                         .frame(height: 100)
                     }
 
-                    // Divider
                     Divider().background(Color.black)
 
-                    // Class Schedule and Description
+                    // MARK: - Schedule and Description Section
                     VStack(alignment: .leading, spacing: 16) {
                         Text("Schedule")
                             .font(.headline)
@@ -80,47 +82,49 @@ struct ViewController: View {
                     }
                     .padding(.horizontal)
 
-                    // Divider
-                    Divider().background(Color.white)
+                    Divider().background(Color.black)
 
-                    // Prelim Resources Section
+                    // MARK: - Prelim Resources Section
                     VStack(alignment: .leading, spacing: 16) {
                         Text("Prelim Resources")
                             .font(.headline)
                             .foregroundColor(.black)
 
-                        // First Prelim Section
+                        // MARK: First Prelim Section
                         ResourceSectionWithTopics(
                             title: "First Prelim",
-                            resources: $firstPrelimResources,
+                            resources: $fstPrelimResources,
                             expandedTopic: $expandedTopic
                         )
+                        .background(.yellow.opacity(0.2))
 
-                        // Second Prelim Section
+                        // MARK: Second Prelim Section
                         ResourceSectionWithTopics(
                             title: "Second Prelim",
-                            resources: $secondPrelimResources,
+                            resources: $sndPrelimResources,
                             expandedTopic: $expandedTopic
                         )
+                        .background(.orange.opacity(0.2))
 
-                        // Final Prelim Section
+                        // MARK: Final Prelim Section
                         ResourceSectionWithTopics(
                             title: "Final Prelim",
                             resources: $finalPrelimResources,
                             expandedTopic: $expandedTopic
                         )
+                        .background(.pink.opacity(0.2))
 
-                        // Add New Resource Section
+                        // MARK: Interactive Resource Addition Section
                         VStack(alignment: .leading) {
                             Text("Add a New Resource")
                                 .font(.headline)
                                 .foregroundColor(.black)
 
-                            TextField("Enter resource link", text: $newResourceLink)
+                            TextField("Enter topic for this link", text: $newResourceTopic)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .padding(.bottom, 8)
-
-                            TextField("Enter topic for this link", text: $newResourceTopic)
+                            
+                            TextField("Enter resource link", text: $newResourceLink)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .padding(.bottom, 8)
 
@@ -130,6 +134,7 @@ struct ViewController: View {
                                 Text("Final Prelim").tag("Final Prelim")
                             }
                             .pickerStyle(SegmentedPickerStyle())
+                            .background(Color.purple.opacity(0.4))
                             .padding(.bottom, 8)
 
                             Button(action: addResource) {
@@ -142,19 +147,19 @@ struct ViewController: View {
                             }
                         }
                         .padding()
-                        .background(Color.white.opacity(0.1))
+                        .background(Color.indigo.opacity(0.3))
                         .cornerRadius(15)
                         .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 5)
                     }
                     .padding(.horizontal)
 
-                    // Divider
-                    Divider().background(Color.white)
+                    Divider().background(Color.black)
                 }
             }
         }
     }
 
+    // MARK: - Add Resource
     private func addResource() {
         guard !newResourceLink.isEmpty, !newResourceTopic.isEmpty else { return }
 
@@ -162,20 +167,21 @@ struct ViewController: View {
 
         switch selectedPrelim {
         case "First Prelim":
-            firstPrelimResources.append(newResource)
+            fstPrelimResources.append(newResource)
         case "Second Prelim":
-            secondPrelimResources.append(newResource)
+            sndPrelimResources.append(newResource)
         case "Final Prelim":
             finalPrelimResources.append(newResource)
         default:
             break
         }
 
-        newResourceLink = "" // Clear the input field
-        newResourceTopic = "" // Clear the topic field
+        newResourceLink = ""
+        newResourceTopic = ""
     }
 }
 
+// MARK: - Functionality for Resource Section With Topics
 struct ResourceSectionWithTopics: View {
     let title: String
     @Binding var resources: [(link: String, topic: String)]
@@ -195,7 +201,7 @@ struct ResourceSectionWithTopics: View {
                         }) {
                             Text(resource.topic)
                                 .padding()
-                                .background(Color.blue.opacity(0.8))
+                                .background(Color.gray.opacity(0.7))
                                 .cornerRadius(10)
                                 .foregroundColor(.white)
                         }
