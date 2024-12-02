@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -33,6 +33,10 @@
 		C1E02B722CFC0C7900CF5590 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C1E02B742CFC0C7900CF5590 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		9B8FDD8B2CFE7570001A65B0 /* ScreenshotsOfApp */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ScreenshotsOfApp; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		C1E02B602CFC0C7700CF5590 /* Frameworks */ = {
@@ -83,6 +87,7 @@
 			children = (
 				C1E02B652CFC0C7700CF5590 /* HackChallenge2024 */,
 				C1E02B642CFC0C7700CF5590 /* Products */,
+				9B8FDD8B2CFE7570001A65B0 /* ScreenshotsOfApp */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +130,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				9B8FDD8B2CFE7570001A65B0 /* ScreenshotsOfApp */,
 			);
 			name = HackChallenge2024;
 			packageProductDependencies = (
